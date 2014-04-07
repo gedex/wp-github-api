@@ -3,7 +3,7 @@
 
 	<p><?php _e( 'Tools contain example usage of <code>github-api</code> plugin API. Please check the code in <code>includes/tools.php</code>.', 'github-api' ); ?></p>
 
-	<table class="widefat importers" cellspacing="0">
+	<table class="widefat" cellspacing="0">
 	<?php $alt = ''; ?>
 	<?php foreach ( $tools as $key => $tool ) : ?>
 		<?php
