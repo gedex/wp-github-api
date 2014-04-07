@@ -30,7 +30,7 @@ class WP_GitHub_API_Tools {
 			__( 'GitHub API Tools', 'github-api' ), // Page title.
 			__( 'GitHub API',       'github-api' ), // Menu title.
 
-			// Cap to edit the settings.
+			// Cap to view the tools.
 			$this->cap,
 
 			// Menus slug.
