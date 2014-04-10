@@ -7,10 +7,6 @@
 	<?php
 	$result = call_user_func( $tool['callback'] );
 
-	if ( $result ) {
-		printf( '<pre>%s</pre>', print_r( $result, true ) );
-	} else {
-		_e( 'Unable to retrieve the result', 'github-api' );
-	}
+	require $tool['view'];
 	?>
 </div>

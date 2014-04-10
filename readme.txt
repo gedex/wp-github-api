@@ -28,6 +28,7 @@ you how to use the API from this plugin to make a call to various GitHub resourc
 1. Settings page
 1. Tools page
 1. Tool as an example to search repositories
+1. Tool as an example to render weekly commit count into a bar chart
 
 == Changelog ==
 

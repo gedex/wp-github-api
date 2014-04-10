@@ -38,6 +38,10 @@ you how to use the API from this plugin to make a call to various GitHub resourc
 
 ![Tool as an example to search repositories](assets/screenshot-3.png)
 
+### Tool as an example to render weekly commit count into a bar chart
+
+![Tool as an example to render weekly commit count into a bar chart](assets/screenshot-4.png)
+
 ## Changelog ##
 
 ### 0.1.0 ###
