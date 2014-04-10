@@ -1,4 +1,4 @@
-=== GitHub ===
+=== GitHub API ===
 Contributors:      akeda
 Tags:              github, api, oauth, rest, http
 Requires at least: 3.6
