@@ -1,5 +1,6 @@
 === GitHub API ===
 Contributors:      akeda
+Donate link:       http://goo.gl/DELyuR
 Tags:              github, api, oauth, rest, http
 Requires at least: 3.6
 Tested up to:      3.8.1

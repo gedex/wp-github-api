@@ -9,6 +9,7 @@ This plugin contains easy-to-use API that uses WP HTTP API to make a request to 
 **Tested up to:** 3.8.1  
 **Stable tag:** trunk (master)  
 **License:** [GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)  
+**Donate link:** http://goo.gl/DELyuR  
 
 ## Description ##
 
