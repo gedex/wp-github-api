@@ -32,6 +32,8 @@ class WP_GitHub_API_Plugin {
 		$this->rate_limit = new WP_GitHub_API_Rate_Limit( $this );
 		$this->authorizer = new WP_GitHub_API_Authorizer( $this );
 		$this->tools      = new WP_GitHub_API_Tools( $this );
+
+		do_action( 'github_api_init', $this );
 	}
 
 	public function __set( $key, $value ) {
