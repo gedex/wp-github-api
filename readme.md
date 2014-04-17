@@ -45,6 +45,9 @@ you how to use the API from this plugin to make a call to various GitHub resourc
 
 ## Changelog ##
 
+### 0.2.0 ###
+Provides `github_api_init` hook
+
 ### 0.1.0 ###
 Initial release
 
