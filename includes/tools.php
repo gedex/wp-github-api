@@ -125,7 +125,7 @@ class WP_GitHub_API_Tools {
 	}
 
 	public function weekly_commit_count_onrender( $tool ) {
-		$this->enqueue_d3js();
+		wp_enqueue_script( 'gh-d3' );
 
 		global $wp_scripts;
 		$exported = sprintf(
@@ -134,16 +134,16 @@ class WP_GitHub_API_Tools {
 			',
 			json_encode( call_user_func( $tool['callback'] ) )
 		);
-		$wp_scripts->add_data( 'github-api-d3js', 'data', $exported );
+		$wp_scripts->add_data( 'gh-d3', 'data', $exported );
 
 		wp_enqueue_script(
 			'github-api-weekly_commit_count',
 
-			$this->plugin->plugin_url . 'js/tool-chart-repo-weekly-commit-count.js',
+			$this->plugin->js_url . 'tool-chart-repo-weekly-commit-count.js',
 
-			array( 'github-api-d3js' ),
+			array( 'gh-d3' ),
 
-			filemtime( $this->plugin->plugin_path . 'js/tool-chart-repo-weekly-commit-count.js' ),
+			$this->plugin->version,
 
 			// In footer.
 			true
@@ -159,22 +159,5 @@ class WP_GitHub_API_Tools {
 		} else {
 			return null;
 		}
-	}
-
-	public function enqueue_d3js() {
-		// Enqueue d3js for rendering chart.
-		wp_enqueue_script(
-			// Handle.
-			'github-api-d3js',
-
-			// Src.
-			$this->plugin->plugin_url . 'js/d3.min.js',
-
-			// Dependencies.
-			array(),
-
-			// Version.
-			filemtime( $this->plugin->plugin_path . 'js/d3.min.js' )
-		);
 	}
 }

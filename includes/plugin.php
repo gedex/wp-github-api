@@ -25,13 +25,18 @@ class WP_GitHub_API_Plugin {
 		$this->plugin_url    = trailingslashit( plugin_dir_url( $path ) );
 		$this->includes_path = $this->plugin_path . trailingslashit( 'includes' );
 		$this->views_path    = $this->plugin_path . trailingslashit( 'views' );
+		$this->css_path      = $this->plugin_path . trailingslashit( 'assets/css' );
+		$this->css_url       = $this->plugin_url . trailingslashit( 'assets/css' );
+		$this->js_path       = $this->plugin_path . trailingslashit( 'assets/js' );
+		$this->js_url        = $this->plugin_url . trailingslashit( 'assets/js' );
 
 		// Instances.
-		$this->setting    = new WP_GitHub_API_Setting( $this );
-		$this->client     = new WP_GitHub_API_Client( $this );
-		$this->rate_limit = new WP_GitHub_API_Rate_Limit( $this );
-		$this->authorizer = new WP_GitHub_API_Authorizer( $this );
-		$this->tools      = new WP_GitHub_API_Tools( $this );
+		$this->script_loader = new WP_GitHub_API_Script_Loader( $this );
+		$this->setting       = new WP_GitHub_API_Setting( $this );
+		$this->client        = new WP_GitHub_API_Client( $this );
+		$this->rate_limit    = new WP_GitHub_API_Rate_Limit( $this );
+		$this->authorizer    = new WP_GitHub_API_Authorizer( $this );
+		$this->tools         = new WP_GitHub_API_Tools( $this );
 
 		do_action( 'github_api_init', $this );
 	}
