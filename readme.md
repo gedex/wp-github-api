@@ -6,7 +6,7 @@ This plugin contains easy-to-use API that uses WP HTTP API to make a request to 
 **Contributors:** [akeda](http://profiles.wordpress.org/akeda)  
 **Tags:** [github](http://wordpress.org/plugins/tags/github), [api](http://wordpress.org/plugins/tags/api), [oauth](http://wordpress.org/plugins/tags/oauth), [rest](http://wordpress.org/plugins/tags/rest), [http](http://wordpress.org/plugins/tags/http)  
 **Requires at least:** 3.6  
-**Tested up to:** 3.8.1  
+**Tested up to:** 3.9  
 **Stable tag:** trunk (master)  
 **License:** [GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)  
 **Donate link:** http://goo.gl/DELyuR  
@@ -44,6 +44,10 @@ you how to use the API from this plugin to make a call to various GitHub resourc
 ![Tool as an example to render weekly commit count into a bar chart](assets/screenshot-4.png)
 
 ## Changelog ##
+
+### 0.3.0 ###
+* Moves CSS/JS into assets directory
+* Register 'gh-d3' and 'gh-octicons'
 
 ### 0.2.0 ###
 Provides `github_api_init` hook

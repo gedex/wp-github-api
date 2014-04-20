@@ -3,7 +3,7 @@ Contributors:      akeda
 Donate link:       http://goo.gl/DELyuR
 Tags:              github, api, oauth, rest, http
 Requires at least: 3.6
-Tested up to:      3.8.1
+Tested up to:      3.9
 Stable tag:        trunk
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,10 @@ you how to use the API from this plugin to make a call to various GitHub resourc
 1. Tool as an example to render weekly commit count into a bar chart
 
 == Changelog ==
+
+= 0.3.0 =
+* Moves CSS/JS into assets directory
+* Register 'gh-d3' and 'gh-octicons'
 
 = 0.2.0 =
 Provides `github_api_init` hook
