@@ -45,6 +45,9 @@ you how to use the API from this plugin to make a call to various GitHub resourc
 
 ## Changelog ##
 
+### 0.4.0 ###
+* Supports pagination
+
 ### 0.3.0 ###
 * Moves CSS/JS into assets directory
 * Register 'gh-d3' and 'gh-octicons'

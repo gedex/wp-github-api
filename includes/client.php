@@ -22,6 +22,13 @@ class WP_GitHub_API_Client {
 	private $plugin;
 
 	/**
+	 * Pagination in response.
+	 *
+	 * @var array
+	 */
+	private $pagination;
+
+	/**
 	 * Client settings.
 	 *
 	 * @var array
@@ -140,11 +147,102 @@ class WP_GitHub_API_Client {
 				$url = add_query_arg( $params, $url );
 		}
 
-		return wp_remote_request( $url, array(
+		$response = wp_remote_request( $url, array(
 			'method'  => $http_method,
 			'headers' => $settings['headers'],
 			'body'    => $settings['body'],
 		) );
+
+		// Inject pagination, if exists, into response.
+		$response = $this->set_pagination( $response );
+
+		return $response;
+	}
+
+	/**
+	 * Inject pagination into response.
+	 *
+	 * @param array|object $response Array containing 'headers', 'body', 'response', 'cookies', 'filename'. A WP_Error instance upon error
+	 *
+	 * @return array|object Array containing 'headers', 'body', 'response', 'cookies', 'filename'. A WP_Error instance upon error
+	 */
+	private function set_pagination( $response ) {
+		if ( is_wp_error( $response ) ) {
+			return $response;
+		}
+
+		$pagination = array();
+
+		$links = wp_remote_retrieve_header( $response, 'link' );
+		if ( ! empty( $links ) ) {
+			/**
+			 * When pagination exists, the header looks like:
+			 *
+			 * Link: <https://api.github.com/{endpoint}?page=%d>; rel="next",
+			 * <https://api.github.com/{endpoint}?page=%d>; rel="last",
+			 * <https://api.github.com/{endpoint}?page=%d>; rel="first",
+			 * <https://api.github.com/{endpoint}?page=%d>; rel="prev"
+			 *
+			 * So `$links` will be:
+			 *
+			 * ```
+			 * array(
+			 *  '<https://api.github.com/{endpoint}?page=%d>; rel="next"',
+			 *  ...
+			 * )
+			 * ```
+			 *
+			 * @link https://developer.github.com/guides/traversing-with-pagination/
+			 */
+			foreach ( explode( ',', $links ) as $link ) {
+				/**
+				 * $segments[0] <https://api.github.com/{endpoint}?page=%d>
+				 * $segments[1] rel="(next|last|first|prev)"
+				 */
+				$segments = explode( ';', trim( $link ) );
+
+				if ( count( $segments ) < 2 ) {
+					continue;
+				}
+
+				$len = strlen( $segments[0] );
+				if ( '<' !== $segments[0][0] && '>' !== $segments[0][ $len - 1 ] ) {
+					continue;
+				}
+				$segments[0] = substr( $segments[0], 1, -1 );
+				$segments[1] = trim( $segments[1] );
+
+				$url = parse_url( $segments[0] );
+				parse_str( $url['query'], $query );
+
+				if ( empty( $query['page'] ) ) {
+					continue;
+				}
+
+				switch ( $segments[1] ) {
+					case 'rel="next"':
+						$pagination['next']     = absint( $query['page'] );
+						$pagination['next_url'] = esc_url( $segments[0] );
+						break;
+					case 'rel="prev"':
+						$pagination['prev']     = absint( $query['page'] );
+						$pagination['prev_url'] = esc_url( $segments[0] );
+						break;
+					case 'rel="first"':
+						$pagination['first']     = absint( $query['page'] );
+						$pagination['first_url'] = esc_url( $segments[0] );
+						break;
+					case 'rel="last"':
+						$pagination['last']     = absint( $query['page'] );
+						$pagination['last_url'] = esc_url( $segments[0] );
+						break;
+				}
+			}
+		}
+
+		$response['pagination'] = $pagination;
+
+		return $response;
 	}
 
 	public function __set( $key, $value ) {
