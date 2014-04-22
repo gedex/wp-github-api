@@ -18,6 +18,11 @@ you how to use the API from this plugin to make a call to various GitHub resourc
 
 **Development of this plugin is done on [GitHub](https://github.com/gedex/wp-github-api). Pull requests are always welcome**.
 
+If you're looking for widget or shortcode you can try following plugins (which depend on GitHub API plugin):
+
+* [GitHub Profile Widget](https://github.com/gedex/wp-gh-profile-widget)
+* [GitHub Members Show-off](https://github.com/gedex/wp-gh-members-showoff)
+
 == Installation ==
 
 1. Upload **GitHub API** plugin to your blog's `wp-content/plugins/` directory and activate.
