@@ -3,7 +3,7 @@
  * Plugin Name: GitHub API
  * Plugin URI: https://github.com/gedex/wp-github-api
  * Description: This plugin contains easy-to-use API that uses WP HTTP API to make a request to GitHub API v3 resources.
- * Version: 0.3.0
+ * Version: 0.4.0
  * Author: Akeda Bagus
  * Author URI: http://gedex.web.id
  * Text Domain: github-api
