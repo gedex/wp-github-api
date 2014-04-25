@@ -21,7 +21,7 @@ you how to use the API from this plugin to make a call to various GitHub resourc
 If you're looking for widget or shortcode you can try following plugins (which depend on GitHub API plugin):
 
 * [GitHub Profile Widget](http://wordpress.org/plugins/gh-profile-widget)
-* [GitHub Members Show-off](http://wordpress.org/plugins/wp-gh-members-showoff)
+* [GitHub Members Show-off](http://wordpress.org/plugins/gh-members-showoff)
 
 == Installation ==
 
